@@ -65,7 +65,6 @@ export class Player {
     this.playerImage = new Image();
     this.playerImage.src = "Game-assets/sprite.png";
     this.move();
-    this.update();
   }
   private move() {
     document.addEventListener("keydown", (event) => {
@@ -116,8 +115,7 @@ export class Player {
       i_height,
     );
   }
-  update = () => {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  update() {
     this.ctx.imageSmoothingEnabled = false;
     let position =
       Math.floor(table.gameState / table.frameCount) %
@@ -138,8 +136,7 @@ export class Player {
       table.s_height,
     );
     table.gameState++;
-    requestAnimationFrame(this.update);
-  };
+  }
   collision() {
     //Boundary check Left
     if (this.x < 0) this.x = 0;

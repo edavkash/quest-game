@@ -39,22 +39,9 @@ export class Player {
         this.defaultAnimation = defaultAnimation;
         this.canvas = canvas;
         this.ctx = ctx;
-        this.update = () => {
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.ctx.imageSmoothingEnabled = false;
-            let position = Math.floor(table.gameState / table.frameCount) %
-                animationSprite[this.defaultAnimation].Location.length;
-            const frameX = animationSprite[this.defaultAnimation].Location[position].x;
-            const frameY = animationSprite[this.defaultAnimation].Location[position].y;
-            this.collision();
-            this.protagonist(this.playerImage, frameX, frameY, table.s_width, table.s_height, this.x, this.y, table.s_width, table.s_height);
-            table.gameState++;
-            requestAnimationFrame(this.update);
-        };
         this.playerImage = new Image();
         this.playerImage.src = "Game-assets/sprite.png";
         this.move();
-        this.update();
     }
     move() {
         document.addEventListener("keydown", (event) => {
@@ -84,6 +71,16 @@ export class Player {
     protagonist(image, x, y, s_width, s_height, xvalue, yvalue, i_width, i_height) {
         //drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
         this.ctx.drawImage(image, x, y, s_width, s_height, xvalue, yvalue, i_width, i_height);
+    }
+    update() {
+        this.ctx.imageSmoothingEnabled = false;
+        let position = Math.floor(table.gameState / table.frameCount) %
+            animationSprite[this.defaultAnimation].Location.length;
+        const frameX = animationSprite[this.defaultAnimation].Location[position].x;
+        const frameY = animationSprite[this.defaultAnimation].Location[position].y;
+        this.collision();
+        this.protagonist(this.playerImage, frameX, frameY, table.s_width, table.s_height, this.x, this.y, table.s_width, table.s_height);
+        table.gameState++;
     }
     collision() {
         //Boundary check Left

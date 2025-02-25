@@ -10,3 +10,8 @@ export const table = {
     speed: 5,
     default: "front",
 };
+export const tablemap = {
+    rows: 10,
+    columns: 20,
+    cellSize: 30
+};
