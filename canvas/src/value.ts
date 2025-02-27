@@ -31,7 +31,7 @@ type tabledata = {
 };
 
 export const tablemap: tabledata = {
-    rows: 10,
-    columns: 20,
-    cellSize: 30
+    rows: 15,
+    columns: 15,
+    cellSize: 50
 }

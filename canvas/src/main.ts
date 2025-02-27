@@ -6,8 +6,8 @@ import { tablemap } from "./value.js";
 window.addEventListener("load", () => {
   const canvas = document.getElementById("canvas") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-  canvas.width = 800;
-  canvas.height = 320;
+  canvas.width = tablemap.columns * tablemap.cellSize;
+  canvas.height = tablemap.rows * tablemap.cellSize;
 
   const player = new Player(
     table.xside,

@@ -5,8 +5,8 @@ import { tablemap } from "./value.js";
 window.addEventListener("load", () => {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    canvas.width = 800;
-    canvas.height = 320;
+    canvas.width = tablemap.columns * tablemap.cellSize;
+    canvas.height = tablemap.rows * tablemap.cellSize;
     const player = new Player(table.xside, table.yside, table.s_width, table.s_height, table.speed, table.default, canvas, ctx);
     const tilemap = new Tilemap(tablemap.rows, tablemap.columns, tablemap.cellSize, ctx, canvas);
     function animate() {
